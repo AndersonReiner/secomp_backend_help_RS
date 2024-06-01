@@ -1,4 +1,5 @@
 package com.anderson.secomp_backend_help_RS.model;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
