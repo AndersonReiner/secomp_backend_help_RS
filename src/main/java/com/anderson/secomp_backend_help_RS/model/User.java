@@ -19,6 +19,10 @@ public class User {
     private Integer id;
 
     @NotNull
+    @Column(name = "user_name")
+    private String userName;
+
+    @NotNull
     private String email;
 
     @NotNull
