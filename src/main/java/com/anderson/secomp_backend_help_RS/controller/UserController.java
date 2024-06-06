@@ -1,5 +1,6 @@
 package com.anderson.secomp_backend_help_RS.controller;
 
+import com.anderson.secomp_backend_help_RS.dto.UserDto;
 import com.anderson.secomp_backend_help_RS.model.User;
 import com.anderson.secomp_backend_help_RS.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,13 +17,14 @@ public class UserController {
     @Autowired
     private UserService service;
 
+    @CrossOrigin( origins = "*")
     @PostMapping("create")
-    public ResponseEntity create(@RequestBody User user){
+    public ResponseEntity create(@RequestBody UserDto dto){
         try {
 
-            service.validationUser(user);
-            service.saveUser(user);
-            return ResponseEntity.status(HttpStatus.CREATED).body(user);
+            service.validationUser(dto);
+            service.saveUser(dto);
+            return ResponseEntity.status(HttpStatus.CREATED).body(dto);
 
         }catch (Exception exception){
 
@@ -31,6 +33,7 @@ public class UserController {
         }
     }
 
+    @CrossOrigin( origins = "*")
     @GetMapping("getAll")
     public List<User> getAll(){
         return service.getAll();

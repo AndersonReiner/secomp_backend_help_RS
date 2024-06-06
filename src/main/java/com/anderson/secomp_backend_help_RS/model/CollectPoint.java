@@ -1,6 +1,5 @@
 package com.anderson.secomp_backend_help_RS.model;
-import java.util.Date;
-
+import java.time.LocalTime;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -20,18 +19,23 @@ public class CollectPoint {
     private Integer id;
 
     @NotNull
+    @Column(unique = true)
     private String name;
 
     @NotNull
     @Column(name = "start_time")
-    private Date startTime;
+    private String startTime;
 
     @NotNull
     @Column(name = "finish_time")
-    private Date finishTime;
+    private String finishTime;
 
     @NotNull
     @Column(name = "open_donation")
-    private boolean openDonataion;
+    private boolean openDonation;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 
 }

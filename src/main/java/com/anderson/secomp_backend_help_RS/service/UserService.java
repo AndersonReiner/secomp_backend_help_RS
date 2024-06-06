@@ -1,11 +1,10 @@
 package com.anderson.secomp_backend_help_RS.service;
 
+import com.anderson.secomp_backend_help_RS.dto.UserDto;
 import com.anderson.secomp_backend_help_RS.model.User;
 import com.anderson.secomp_backend_help_RS.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 import java.util.Optional;
@@ -16,7 +15,11 @@ public class UserService{
     @Autowired
     private UserRepository repository;
 
-    public void validationUser(User user) throws Exception{
+    public void validationUser(UserDto dto) throws Exception{
+        User user = new User();
+        user.setUserName(dto.userName());
+        user.setEmail(dto.email());
+        user.setPassword(dto.password());
         if (repository.findByUserName(user.getUserName()) != null){
             throw new Exception("Existing username");
         }
@@ -25,7 +28,11 @@ public class UserService{
         }
     }
 
-    public void saveUser(User user){
+    public void saveUser( UserDto dto){
+        User user = new User();
+        user.setUserName(dto.userName());
+        user.setEmail(dto.email());
+        user.setPassword(dto.password());
         repository.save(user);
     }
 

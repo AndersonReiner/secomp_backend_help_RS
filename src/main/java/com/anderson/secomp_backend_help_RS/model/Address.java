@@ -27,8 +27,6 @@ public class Address {
     @NotNull
     private String neighborhood;
 
-    @ManyToOne
-    @JoinColumn(name = "collect_point_id", referencedColumnName = "id")
-    private CollectPoint collectPoint;
+
     
 }

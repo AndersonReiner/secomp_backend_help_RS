@@ -25,9 +25,6 @@ public class ReceivingDonation {
     @Column(name = "items_type")
     private String itemsType;
 
-    @NotNull
-    @ManyToOne
-    @JoinColumn(name = "collect_point_id", referencedColumnName = "id")
-    private CollectPoint collectPoint;
+
 
 }
